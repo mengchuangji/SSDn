@@ -1,0 +1,52 @@
+{
+    // model
+    "model": "ThreeStageModel",
+    "iter": 0,
+    // net
+    "networks":[{
+        "name": "BNN",
+        "type": "BNN",
+        "args": {
+            "blindspot": 9
+        }
+//         , "path": "/home/nagejacob/Documents/codes/SpatiallyAdaptiveSSID/pretrained_models/BNN.pth"
+    }, {
+        "name": "LAN",
+        "type": "LAN",
+        "args": {
+            "blindspot": 3
+        }
+//         , "path": "/home/nagejacob/Documents/codes/SpatiallyAdaptiveSSID/pretrained_models/LAN.pth"
+    }, {
+        "name": "UNet",
+        "type": "UNet",
+        "args": {}
+//         , "path": "/home/nagejacob/Documents/codes/SpatiallyAdaptiveSSID/pretrained_models/UNet.pth"
+    }],
+    // datasets
+    "train_datasets": [{
+        "type": "SIDDSrgbTrainDataset",
+         "args": {
+             "patch_size": 128,
+             "pin_memory": true
+         },
+        "batch_size": 2
+    }],
+    "validation_datasets": [{
+        "type": "SIDDSrgbValidationDataset",
+        "args": {}
+    }],
+    // training parameters
+    "lr": 3e-4,
+    // "print_every": 10000000,
+    "print_every": 500,
+    "save_every": 100000,
+    "validate_every": 2000,
+    "BNN_iters": 100000,
+    "LAN_iters": 100000,
+    "UNet_iters": 100000,
+    "num_iters": 300000,
+    "log_dir": "logs",
+    "log_file": "logs/log.out"
+//    , "resume_from": ""
+}

@@ -1,0 +1,80 @@
+{
+    // model
+    "model": "ThreeStageModel_v2",
+    "iter": 0,
+    // net
+    "networks":[{
+        "name": "N2SUNet",
+        "type": "N2SUNet",
+        "args": {
+            "in_ch": 1,
+            "out_ch": 1
+        }
+//         , "path": "/home/shendi_mcj/code/Reproducible/SpatiallyAdaptiveSSID/train/logs/XJ4/model_iter_00010000.pth"
+    }, {
+        "name": "LAN",
+        "type": "LAN",
+        "args": {
+            "receptive_feild": 3,
+            "in_ch": 1
+        }
+//         , "path": "/home/shendi_mcj/code/Reproducible/SpatiallyAdaptiveSSID/train/logs/XJ4/model_iter_00020000.pth"
+    }, {
+        "name": "UNet",
+        "type": "UNet",
+        "args": {
+            "in_ch": 1,
+            "out_ch": 1
+        }
+//         , "path": "/home/shendi_mcj/code/Reproducible/SpatiallyAdaptiveSSID/train/logs/XJ4/model_iter_00030000.pth"
+    },
+    {
+        "name": "invDN",
+        "type": "invDN",
+        "args": {
+            "in_ch": 1,
+            "out_ch": 1
+        }
+//         , "path": "/home/nagejacob/Documents/codes/SpatiallyAdaptiveSSID/pretrained_models/UNet.pth"
+    }],
+    // datasets
+    "train_datasets": [{
+        "type": "SeisMatTrainDataset",
+         "args": {
+//             "path": "/home/shendi_mcj/datasets/seismic/fielddata/train/prep/SEGY_s256_o128",
+             "path": "D:\\datasets\\seismic\\marmousi\\f35_s256_o128",
+             "patch_size": 128,
+             "pin_memory": true
+         },
+        "batch_size": 2
+    }],
+    "validation_datasets": [{
+        "type": "SeisMatValidationDataset",
+        "args": {
+//            "path": "/home/shendi_mcj/datasets/seismic/fielddata/train/prep/SEGY_s256_o128",
+            "path": "D:\\datasets\\seismic\\marmousi\\f35_s256_o128",
+            "patch_size": 128,
+             "pin_memory": true
+        }
+    }],
+    // training parameters
+    "lr": 3e-4,
+    // setting mask
+    "width": 2,
+    "mode":"zero", //'interpolate' 'tracewise' 'zero
+    "pobability": 0.5,
+    // "print_every": 10000000,
+    "print_every": 200,
+    "save_every": 10000,
+    "validate_every": 200,
+    "N2SUNet_iters": 10000,
+    "LAN_iters": 10000,
+    "UNet_iters": 10000,
+    "invDN_iters": 20000,
+    "num_iters": 50000,
+    "std_width": 7,
+    "beta_lower_upper": [{"lower":0.05, "upper":0.2}],
+    "log_dir": "logs/XJ4",
+    "log_file": "logs/XJ4/log.out"
+//    , "resume_from": ""
+}

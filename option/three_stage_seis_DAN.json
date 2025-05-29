@@ -1,0 +1,94 @@
+{
+    // model
+    "model": "ThreeStageModel_DAN",
+    "iter": 0,
+    // net
+    "networks":[{
+        "name": "BNN",
+        "type": "BNN",
+        "args": {
+            "blindspot": 9,
+            "in_ch": 1,
+            "out_ch": 1
+        }
+//         , "path": "/home/nagejacob/Documents/codes/SpatiallyAdaptiveSSID/pretrained_models/BNN.pth"
+    }, {
+        "name": "LAN",
+        "type": "LAN",
+        "args": {
+            "blindspot": 3,
+            "in_ch": 1
+        }
+//         , "path": "/home/nagejacob/Documents/codes/SpatiallyAdaptiveSSID/pretrained_models/LAN.pth"
+    },{
+        "name": "UNetD",
+        "type": "UNetD",
+        "args": {
+            "in_chn": 1
+//            "out_ch": 1
+        }
+//         , "path": "/home/nagejacob/Documents/codes/SpatiallyAdaptiveSSID/pretrained_models/UNet.pth"
+    },
+        {
+        "name": "UNetG",
+        "type": "UNetG",
+        "args": {
+            "in_chn": 1
+//            "out_ch": 1
+        }
+//         , "path": "/home/nagejacob/Documents/codes/SpatiallyAdaptiveSSID/pretrained_models/UNet.pth"
+    },
+        {
+        "name": "DiscriminatorLinear",
+        "type": "DiscriminatorLinear",
+        "args": {
+            "in_chn": 2
+//            "out_ch": 1
+        }
+//         , "path": "/home/nagejacob/Documents/codes/SpatiallyAdaptiveSSID/pretrained_models/UNet.pth"
+    }
+   ],
+    // datasets
+    "train_datasets": [{
+        "type": "SeisMatTrainDataset",
+         "args": {
+             "path": "/home/shendi_mcj/datasets/seismic/fielddata/train/prep/SEGY_s256_o128",
+             "patch_size": 128,
+             "pin_memory": true
+         },
+        "batch_size": 2
+    }],
+    "validation_datasets": [{
+        "type": "SeisMatValidationDataset",
+        "args": {
+            "path": "/home/shendi_mcj/datasets/seismic/fielddata/train/prep/SEGY_s256_o128",
+            "patch_size": 128,
+             "pin_memory": true
+        }
+    }],
+    // training parameters
+    "_C": 1,
+    "lr": 3e-4,
+    "lr_D": 1e-4,
+    "lr_G": 1e-4,
+    "lr_P": 2e-4,
+    "alpha": 0.5,
+    // kernel size for the Gauss filter in loss function
+    "ksize": 5,
+    "lambda_gp": 10,
+    "tau_D": 1000,
+    "tau_G": 10,
+    "num_critic": 3,
+    // "print_every": 10000000,
+    "print_every": 300,
+    "save_every": 10000,
+    "validate_every": 300,
+    "BNN_iters": 10000,
+    "LAN_iters": 10000,
+    "UNet_iters": 10000,
+    "DAN_iters": 10000,
+    "num_iters": 40000,
+    "log_dir": "logs/XJ2_1",
+    "log_file": "logs/XJ2_1/log.out"
+//    , "resume_from": ""
+}

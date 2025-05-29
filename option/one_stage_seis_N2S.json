@@ -1,0 +1,48 @@
+{
+    // model
+    "model": "OneStageModel_N2S",
+    "iter": 0,
+    // net
+    "networks":[{
+        "name": "UNet",
+        "type": "UNet",
+        "args": {
+            "in_ch": 1,
+            "out_ch": 1
+        }
+//         , "path": "/home/nagejacob/Documents/codes/SpatiallyAdaptiveSSID/pretrained_models/UNet.pth"
+    }],
+    // datasets
+    "train_datasets": [{
+        "type": "SeisMatTrainDataset",
+         "args": {
+             "path": "/home/shendi_mcj/datasets/seismic/fielddata/train/prep/SEGY_s256_o128",
+             "patch_size": 128,
+             "pin_memory": true
+         },
+        "batch_size": 2
+    }],
+    "validation_datasets": [{
+        "type": "SeisMatValidationDataset",
+        "args": {
+            "path": "/home/shendi_mcj/datasets/seismic/fielddata/train/prep/SEGY_s256_o128",
+            "patch_size": 128,
+             "pin_memory": true
+        }
+    }],
+    // training parameters
+    "lr": 3e-4,
+     // setting mask
+    "width": 2,
+    "mode":"zero", //'interpolate' 'tracewise' 'zero
+    "pobability": 0.5,
+    // "print_every": 10000000,
+    "print_every": 200,
+    "save_every": 10000,
+    "validate_every": 400,
+    "UNet_iters": 10000,
+    "num_iters": 10000,
+    "log_dir": "logs/XJ4",
+    "log_file": "logs/XJ4/log.out"
+//    , "resume_from": ""
+}
