@@ -1,4 +1,4 @@
-# 2025 TGRS A Self-Supervised Method for Seismic Random Noise Attenuation under Non-Pixelwise Independent Assumption
+# 2025 TGRS A Self-Supervised Method for Seismic Random Noise Attenuation under Non-Pixelwise Independent Assumption~~
  This repo contains the official implementation for the paper [A Self-Supervised Method for Seismic Random Noise Attenuation under Non-Pixelwise Independent Assumption](https://ieeexplore.ieee.org/abstract/document/11007646). 
 
 by Chuangji Meng, Jinghuai Gao, Wenting Shang, Yajun Tian
@@ -6,7 +6,7 @@ by Chuangji Meng, Jinghuai Gao, Wenting Shang, Yajun Tian
 
 Schematic diagram of BNN_LAN_DNN model and  BNNv2_LAN_DNN model
 ![bnnlandnn](assets/training_BNN.png)
-
+![n2slandnn](assets/training_N2S.png)
 Schematic diagram of BSN, BNN and  BNNv2
 ![bsnbnn](assets/BSN_BNN.png)
 
