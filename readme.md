@@ -4,7 +4,7 @@
 by Chuangji Meng, Jinghuai Gao, Wenting Shang, Yajun Tian
 
 
-Schematic diagram of BNN_LAN_DNN model and  BNNv2_LAN_DNN model
+Schematic diagram of BNN_LAN_DNN model and  N2S_LAN_DNN model
 ![bnnlandnn](assets/training_BNN.png)
 ![n2slandnn](assets/training_N2S.jpg)
 Schematic diagram of BSN, BNN and  BNNv2
