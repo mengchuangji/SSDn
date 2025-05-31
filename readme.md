@@ -10,8 +10,6 @@ Schematic diagram of BNN_LAN_DNN model and  N2S_LAN_DNN model
 Schematic diagram of BSN, BNN and  BNNv2
 ![bsnbnn](assets/BSN_BNN.png)
 
-Schematic diagram of BNN_LAN_DNN model and  BNNv2_LAN_DNN model
-![n2slandnn](assets/training_N2S.png)
 
 An example of tracewise coherent noise suppression
 ![tracewise](assets/PK_BNNLANDN_bnnsize_v2_1.png)
